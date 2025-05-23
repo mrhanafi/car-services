@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('mileage');
             $table->string('item');
-            $table->string('car_type');
-            $table->decimal('price',2)->nullable();
+            $table->string('car_type')->nullable();
+            $table->integer('quantity')->default(0);
+            $table->decimal('price',10,2)->nullable();
             $table->unsignedBigInteger('model_id');
             $table->foreign('model_id')->references('id')->on('car_models')->onDelete('cascade');
             $table->timestamps();

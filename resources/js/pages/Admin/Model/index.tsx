@@ -127,7 +127,7 @@ const CarModel = ({models,flash,brands}:Props) => {
     };
 
     const handleShow = (model: CarModel) => {
-        router.get(route('cars.show',model.id))
+        router.get(route('cars.show', model.id));
     }
 
     const handleDelete = (brandId: number) => {

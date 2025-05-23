@@ -14,8 +14,8 @@ class CarModelController extends Controller
     public function index()
     {
         $models = CarModel::with('carBrand')->paginate(10);
-        // dd($models);
         $brands = Brand::all();
+        // dd($brands);
         return Inertia::render('Admin/Model/index',[
             'models' => $models,
             'brands' => $brands,
@@ -29,7 +29,7 @@ class CarModelController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'model' => 'required|string|max:60',
+            'model' => 'required|exists:car_models,model|string|max:60',
         ]);
 
         CarModel::create([

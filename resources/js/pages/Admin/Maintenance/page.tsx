@@ -532,7 +532,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
                                 value={data.price}
                                 placeholder='RM'
                                 onChange={(e) => setData('price', e.target.value)}
-                                required className="focus:ring-2 focus:ring-primary"
+                                className="focus:ring-2 focus:ring-primary" step={"0.01"}
                             />
                         </div>
                         
