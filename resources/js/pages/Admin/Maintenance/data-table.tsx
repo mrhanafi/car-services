@@ -45,33 +45,33 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    // onColumnFiltersChange: setColumnFilters,
+    onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    onGlobalFilterChange: setGlobalFilter,
+    // onGlobalFilterChange: setGlobalFilter,
     state: {
       sorting,
-      // columnFilters,
-      globalFilter,
+      columnFilters,
+      // globalFilter,
     },
     
   })
 
   return (
     <div>
-      <div className="flex items-center py-4">
+      {/* <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
-          // value={(table.getColumn("mileage")?.getFilterValue() as string) ?? ""}
-          value=''
-          onChange={e => table.setGlobalFilter(String(e.target.value))}
-          // onChange={(event) =>
-          //   table.getColumn("mileage")?.setFilterValue(event.target.value)
-          // }
+          value={(table.getColumn("mileage")?.getFilterValue() as string) ?? ""}
+          // value=''
+          // onChange={e => table.setGlobalFilter(String(e.target.value))}
+          onChange={(event) =>
+            table.getColumn("mileage")?.setFilterValue(event.target.value)
+          }
           className="max-w-sm"
         />
-      </div>
+      </div> */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -116,6 +116,24 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
         <DataTablePagination table={table} />
+        {/* <div className="flex items-center justify-end space-x-2 py-4">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          Previous
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          Next
+        </Button>
+      </div> */}
         
       </div>
     </div>

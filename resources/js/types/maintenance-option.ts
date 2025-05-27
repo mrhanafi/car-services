@@ -12,6 +12,10 @@ type MaintenanceOption = {
 
 export const mileageOption = [
     {
+        value: '0',
+        label: '0 km',
+    },
+    {
         value: '10000',
         label: '10,000 km',
     },

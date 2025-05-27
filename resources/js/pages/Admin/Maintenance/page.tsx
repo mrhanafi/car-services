@@ -332,7 +332,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [toastType, setToastType] = useState<'success' | 'error'>('success');
-  // console.log(model);
+  console.log(carmaintenance);
   // const data = getData()
 
   useEffect(() => {
@@ -362,31 +362,33 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
   const columns: ColumnDef<CarMaintenance>[] = [
     {
       accessorKey: "mileage",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Mileage (km)
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
+      header: "Mileage",
+      // header: ({ column }) => {
+      //   return (
+      //     <Button
+      //       variant="ghost"
+      //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      //     >
+      //       Mileage (km)
+      //       <ArrowUpDown className="ml-2 h-4 w-4" />
+      //     </Button>
+      //   )
+      // },
     },
     {
       accessorKey: "item",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Item
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        )
-      },
+      header: "Item",
+      // header: ({ column }) => {
+      //   return (
+      //     <Button
+      //       variant="ghost"
+      //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      //     >
+      //       Item
+      //       <ArrowUpDown className="ml-2 h-4 w-4" />
+      //     </Button>
+      //   )
+      // },
     },
     {
       accessorKey: "quantity",
@@ -547,7 +549,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
                             <Input id="quantity" type='number'
                                 value={data.quantity}
                                 onChange={(e) => setData('quantity', e.target.value)}
-                                required className="focus:ring-2 focus:ring-primary"
+                                 className="focus:ring-2 focus:ring-primary"
                             />
                         </div>
                         

@@ -12,7 +12,7 @@ class MaintenanceLibController extends Controller
 {
     public function show(CarModel $model)
     {
-        $carmaintenance = CarMaintenance::where('model_id',$model->id)->paginate(10);
+        $carmaintenance = CarMaintenance::where('model_id',$model->id)->orWhere('model_id',null)->orderBy('id','DESC')->paginate(100);
         // dd($carmaintenance);
         return Inertia::render('Admin/Maintenance/page',[
                 'model' => $model,
