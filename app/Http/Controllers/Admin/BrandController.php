@@ -23,11 +23,14 @@ class BrandController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
-            'name' => 'required|exists:brands,name|string|max:60',
+            'name' => 'required|string|max:60',
         ]);
 
-        Brand::create($validated);
+        Brand::create([
+            'name' => $validated['name']
+        ]);
 
         return redirect()->route('brands.index')->with('success','Task Created Successfully');
     }

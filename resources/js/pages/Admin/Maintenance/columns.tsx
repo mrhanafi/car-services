@@ -23,6 +23,7 @@ export type CarMaintenance = {
   mileage: string;
   item: string;
   price: number;
+  quantity: number;
   model_id: number;
   car_model: {
       id: number;
@@ -58,6 +59,10 @@ export const columns: ColumnDef<CarMaintenance>[] = [
         </Button>
       )
     },
+  },
+  {
+    accessorKey: "quantity",
+    header: "Qty",
   },
   {
     accessorKey: "price",

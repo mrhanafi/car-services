@@ -287,6 +287,7 @@ type CarMaintenance = {
   mileage: string;
   item: string;
   price: number;
+  quantity: number;
   model_id: number;
   car_model: {
       id: number;
@@ -388,6 +389,10 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
       },
     },
     {
+      accessorKey: "quantity",
+      header: "Qty",
+    },
+    {
       accessorKey: "price",
       header: "Price (RM)",
     },
@@ -425,6 +430,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
       mileage: '',
       item: '',
       price: '',
+      quantity: '',
       model_id: model.id,
   });
 
@@ -455,6 +461,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
         mileage: cm.mileage,
           item: cm.item,
           price: cm.price,
+          quantity: cm.quantity.toString(),
           model_id: cm.model_id?.toString()
       });
       setIsOpen(true);
@@ -518,7 +525,7 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
                             </Select>                                
                         </div> 
                         <div className="space-y-2">
-                            <Label htmlFor="item">Item</Label>                                    
+                            <Label htmlFor="item">Item</Label>
                             <Input id="item"
                                 value={data.item}
                                 onChange={(e) => setData('item', e.target.value)}
@@ -533,6 +540,14 @@ const TestPage = ({carmaintenance,brand,model,flash}:Props) => {
                                 placeholder='RM'
                                 onChange={(e) => setData('price', e.target.value)}
                                 className="focus:ring-2 focus:ring-primary" step={"0.01"}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="quantity">Quantity</Label>
+                            <Input id="quantity" type='number'
+                                value={data.quantity}
+                                onChange={(e) => setData('quantity', e.target.value)}
+                                required className="focus:ring-2 focus:ring-primary"
                             />
                         </div>
                         

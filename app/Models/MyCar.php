@@ -8,8 +8,8 @@ class MyCar extends Model
 {
     protected $fillable = [
         'title',
-        'brands_id',
-        'models_id',
+        'brand',
+        'model',
         'user_id',
     ];
 

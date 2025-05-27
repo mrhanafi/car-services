@@ -13,7 +13,7 @@ class MyCarController extends Controller
 {
     public function index()
     {
-        $cars = MyCar::where('user_id',Auth::user()->id)->with('brand')->with('model')->get();
+        $cars = MyCar::where('user_id',Auth::user()->id)->get();
         // $cars = MyCar::all();
         $brands = Brand::all();
         // dd($brands);
@@ -45,10 +45,14 @@ class MyCarController extends Controller
             'model' => 'required',
         ]);
 
+        $model = CarModel::findOrFail($validated['model']);
+
         MyCar::create([
             'title' => $validated['title'],
-            'brands_id' => $validated['brand'],
-            'models_id' => $validated['model'],
+            'brand' => $model->carBrand->name,
+            'brand_id' => $validated['brand'],
+            'model' => $model->model,
+            'model_id' => $validated['model'],
             'user_id' => Auth::user()->id,
         ]);
 

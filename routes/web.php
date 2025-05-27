@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\MaintenanceLibController;
 use App\Http\Controllers\MyCarController;
 use App\Http\Controllers\MyCarDetailsController;
+use App\Http\Controllers\MyCarRecordController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -39,6 +40,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/my-car/delete/{mycar}',[MyCarController::class,'destroy'])->name('mycar.destroy');
 
     Route::get('/my-car/{mycar}',[MyCarDetailsController::class,'index'])->name('mycar.details.index');
+    Route::post('/my-car/services/{mycar}',[MyCarDetailsController::class,'getItem'])->name('mycar.index.service.getservice');
+    Route::post('/my-car/services/{mycar}/store',[MyCarDetailsController::class,'store'])->name('mycar.index.service.store');
+    Route::get('/my-car/{mycar}/add',[MyCarDetailsController::class,'addDetails'])->name('mycar.details.add');
+    Route::put('/my-car/{mycar}/update',[MyCarDetailsController::class,'update'])->name('mycar.details.update');
+    Route::delete('/my-car/{mycar}/destroy',[MyCarDetailsController::class,'destroy'])->name('mycar.details.destroy');
+
+    Route::get('/my-car/{mycar}/records/{recId}',[MyCarRecordController::class,'showItem'])->name('mycar.details.records.show');
+    Route::post('/my-car/{mycar}/records/{recId}/store',[MyCarRecordController::class,'store'])->name('mycar.details.records.store');
+    Route::put('/my-car/{mycar}/records/{recId}/update',[MyCarRecordController::class,'update'])->name('mycar.details.records.update');
+    Route::delete('/my-car/records/{recId}/destroy',[MyCarRecordController::class,'destroy'])->name('mycar.details.records.destroy');
+    // Route::get('/my-car/{mycar}/records/{recId}/view',[MyCarDetailsController::class,'showItem'])->name('mycar.details.records.show');
+
+
 });
 
 require __DIR__.'/settings.php';

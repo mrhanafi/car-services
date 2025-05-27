@@ -45,6 +45,7 @@ class MaintenanceLibController extends Controller
             'mileage' => $validated['mileage'],
             'item' => $validated['item'],
             'price' => $request->price,
+            'quantity' => $request->quantity,
             'model_id' => $request->model_id,
         ]);
 
@@ -64,6 +65,7 @@ class MaintenanceLibController extends Controller
             'mileage' => $validated['mileage'],
             'item' => $validated['item'],
             'price' => $request->price,
+            'quantity' => $request->quantity,
             'model_id' => $request->model_id,
         ]);
 

@@ -29,7 +29,7 @@ class CarModelController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'model' => 'required|exists:car_models,model|string|max:60',
+            'model' => 'required|string|max:60',
         ]);
 
         CarModel::create([

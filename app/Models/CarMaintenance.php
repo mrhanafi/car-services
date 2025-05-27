@@ -11,6 +11,7 @@ class CarMaintenance extends Model
         'mileage',
         'item',
         'price',
+        'quantity',
         'model_id',
     ];
 

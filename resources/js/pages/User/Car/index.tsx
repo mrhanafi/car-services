@@ -29,17 +29,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 type MyCar = {
   id: number;
   title?: string | undefined;
-  brands_id: string;
-  models_id: string;
+  brand: string;
+  model: string;
   user_id: number;
-  brand: {
-    id: number;
-    name: string;
-  };
-  model: {
-    id: number;
-    model: string;
-  }
   // user:{
   //     id:number;
   //     name:string;
@@ -159,16 +151,16 @@ const MyCarPage = ({ mycars, brands, flash }: Props) => {
     router.get(route('mycar.details.index', car.id));
   };
 
-  const handleEdit = (car: MyCar) => {
-    setEditingCar(car);
-        // console.log('model',editingModel);
-        setData({
-            title: car.title,
-            brand: car.brands_id.toString(),
-            model: car.models_id.toString(),
-        });
-        setIsOpen(true);
-  };
+  // const handleEdit = (car: MyCar) => {
+  //   setEditingCar(car);
+  //       // console.log('model',editingModel);
+  //       setData({
+  //           title: car.title,
+  //           brand: car.brand,
+  //           model: car.model,
+  //       });
+  //       setIsOpen(true);
+  // };
 
   const handleDelete = (carId: number) => {
       destroy(route('mycar.destroy', carId));
@@ -271,12 +263,6 @@ const MyCarPage = ({ mycars, brands, flash }: Props) => {
                         >
                             <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost"
-                            size="icon"
-                            onClick={() => handleEdit(car)}
-                        >
-                            <Pencil className="h-4 w-4" />
-                        </Button> 
                         <Button
                             variant="ghost"
                             size="icon"
@@ -289,7 +275,7 @@ const MyCarPage = ({ mycars, brands, flash }: Props) => {
                   </CardHeader>                            
                   <CardContent>
                       <p className="text-sm text-muted-foreground">
-                          {car.model.model || 'No description'}
+                          {car.model || 'No description'}
                       </p>
                   </CardContent>                        
                 </Card>
