@@ -11,12 +11,17 @@ use Inertia\Inertia;
 
 class MyCarRecordController extends Controller
 {
-    public function showItem(MyCar $mycar,$recId)
+    public function showItem(MyCar $mycar, $recId)
     {
-        $records = MyCarRecord::where('id',$recId)->with('recordDetails')->first();
-        $services = CarMaintenance::where('mileage',$records->service_mileage)->orWhere('mileage','0')->get();
-        // dd($records);
-        return Inertia::render('User/CarDetails/view-details',[
+        $records = MyCarRecord::where('id', $recId)->with('recordDetails')->first();
+        $services = CarMaintenance::where('model_id', $mycar->models_id)
+            ->where(function ($query) use ($records) {
+                $query->where('mileage', $records->service_mileage)
+                    ->orWhere('mileage', '0');
+            })
+            ->get();
+        // dd($services);
+        return Inertia::render('User/CarDetails/view-details', [
             'carrecords' => $records,
             'services' => $services,
             'flash' => [
@@ -28,11 +33,11 @@ class MyCarRecordController extends Controller
 
     public function getServices(Request $request)
     {
-        $service = CarMaintenance::where('mileage',$request->mileage)->get();
+        $service = CarMaintenance::where('mileage', $request->mileage)->get();
         return response()->json($service);
     }
 
-    public function store(Mycar $mycar,$recId,Request $request)
+    public function store(Mycar $mycar, $recId, Request $request)
     {
         // dd($request->all());
         $validated = $request->validate([
@@ -49,24 +54,22 @@ class MyCarRecordController extends Controller
             'record_id' => $recId,
         ]);
 
-        return redirect()->route('mycar.details.records.show',[$mycar,$recId])->with('success','Service added successfully');
+        return redirect()->route('mycar.details.records.show', [$mycar, $recId])->with('success', 'Service added successfully');
     }
 
-    public function update(Mycar $mycar,RecordDetail $recId,Request $request)
+    public function update(Mycar $mycar, RecordDetail $recId, Request $request)
     {
         $validated = $request->validate([
             'item' => 'required|string|max:60',
         ]);
 
-        $recId->update([
-
-        ]);
+        $recId->update([]);
     }
 
     public function destroy(RecordDetail $recId)
     {
         $recId->delete();
 
-        return redirect()->back()->with('success','Service deleted successfully');
+        return redirect()->back()->with('success', 'Service deleted successfully');
     }
 }
