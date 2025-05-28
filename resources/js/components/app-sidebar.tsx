@@ -19,7 +19,7 @@ const mainNavItems: NavItem[] = [
         href: '/my-car',
         icon: CarFront,
     },
-    
+
 ];
 
 const adminNavItems: NavItem[] = [
@@ -69,7 +69,7 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+                {/* <NavFooter items={footerNavItems} className="mt-auto" /> */}
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
