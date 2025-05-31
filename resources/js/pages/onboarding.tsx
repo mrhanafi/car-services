@@ -1,9 +1,10 @@
-import { Link } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 import React from 'react'
 
 const Onboarding = () => {
   return (
-    <div>
+    <div className='flex flex-col min-h-screen'>
+      <Head title="Home" />
     <div className="font-sans text-gray-800">
       {/* Header Section */}
       {/* <header className='bg-cover bg-center w-full h-[600px] overflow-hidden relative'>
@@ -48,11 +49,11 @@ const Onboarding = () => {
       </section>
 
 
+    </div>
       {/* Footer */}
-      <footer className="bg-black py-6 text-center text-sm">
+      <footer className="bg-black py-6 text-center text-sm mt-auto">
         <p className='text-white'>© Namel Solutions @ {new Date().getFullYear()}</p>
       </footer>
-    </div>
     </div>
   )
 }

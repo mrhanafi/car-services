@@ -9,7 +9,8 @@ class MyCar extends Model
     protected $fillable = [
         'title',
         'brand',
-        'model',
+        'brands_id',
+        'models_id',
         'user_id',
     ];
 

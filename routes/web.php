@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\MaintenanceLibController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyCarController;
 use App\Http\Controllers\MyCarDetailsController;
 use App\Http\Controllers\MyCarRecordController;
@@ -14,9 +15,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
 
     Route::get('/admin/brands', [BrandController::class, 'index'])->name('brands.index');
     Route::post('/admin/brands/store', [BrandController::class, 'store'])->name('brands.store');
