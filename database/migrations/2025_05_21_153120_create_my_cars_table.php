@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('brands_id')->nullable();
             $table->foreign('brands_id')->references('id')->on('brands')->onDelete('cascade');
             $table->unsignedBigInteger('models_id')->nullable();
-            $table->string('model');
+            $table->string('model')->nullable();
             $table->foreign('models_id')->references('id')->on('car_models')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
